@@ -1,0 +1,39 @@
+<div style="text-align: center;">
+ <h3>Are you tired of the loud sirens? 
+    <br>
+ You really can not have a proper one phone call in the street
+ <br>
+ and affraid of having heart attack?
+ <br>
+ Here we are for you. Please join us!
+</h3>
+<br>
+.</p>
+    <img style="width: 250px; height: 200px;" src="images/police-siren.png" />
+   
+    <form id="form" action="/register" method="post" >
+        <div style="margin-bottom: 30px;">
+        <p><label for="firstname"> <input name="firstname" placeholder= "First Name" required></input></label></p>
+        <p><label for="lastname"> <input name="lastname" placeholder= "Last Name" required></input></label></p>
+        <p><label for="email"> <input name="email" placeholder= "Email" required></input></label></p>
+        <p><label for="password"> <input name="password" placeholder= "Password" required></input></label></p>
+
+        </div>
+
+        {{!-- <input  type="hidden" name="signature" style="display: none;" /> --}}
+       
+        
+       <p style="color:red">{{errormessage}}</p>
+ 
+
+<input type="submit"  value="SIGNUP" src="views/ambulance.wav" >
+
+    </form>
+<p>Members  <a href="/login">LOG IN</a> </p>
+
+
+
+  
+   
+
+</div>

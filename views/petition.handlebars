@@ -1,0 +1,92 @@
+<div style="text-align: center;">
+    <h1>Enough of the loud sirens!!!</h1>
+    <p style="font-family:verdana">The rescue service in Germany is on the border.
+    <br>
+     An increase in the number of emergency calls and a decrease in the resilience of the population 
+     <br>
+     is responsible for overloading the emergency services.
+    <br> 
+    Workers in control centers and ambulances are on the verge of burnout. 
+    <br>
+    The disease rate is increasing. The frustration too. downward spiral
+<br>
+We want changes!
+<br>
+</p>
+    <img style="width: 250px; height: 200px;" src="images/police-siren.png" />
+   
+    <form id="form" action="" method="post" onsubmit="event.preventDefault(); validateMyForm();">
+        <div style="margin-bottom: 30px;">
+        </div>
+        <canvas id="canvas" style="width: 300px; height: 100px; border: 2px dotted black"></canvas>
+        <p>Sign here</p>
+        <input  type="hidden" name="signature" style="display: none;" />
+       
+        
+       <p style="color:red">{{errormessage}}</p>
+
+<input type="submit"  name="" value="SUBMIT"  onclick="audio.play()">
+
+    </form>
+
+    <script>
+
+        const canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var pos = { x: 0, y: 0 };
+
+        document.addEventListener('mousemove', draw);
+        document.addEventListener('mousedown', setPosition);
+        document.addEventListener('mouseenter', setPosition);
+
+        var rect = canvas.getBoundingClientRect(); 
+
+        function setPosition(e) {
+         
+            const rect = canvas.getBoundingClientRect();
+      
+            pos.x = e.clientX - rect.left
+            pos.y = e.clientY - rect.top
+        }
+        
+        function draw(e) {
+            if (e.buttons !== 1) return;
+
+            ctx.beginPath(); // begin
+
+            ctx.lineWidth = 1;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000000';
+
+            ctx.moveTo(pos.x, pos.y); // from
+            setPosition(e);
+            ctx.lineTo(pos.x, pos.y); // to
+
+            ctx.stroke(); // draw it!
+            
+        }
+
+        function validateMyForm(){
+        
+            const canvasData = canvas.toDataURL(); 
+            document.querySelector('[type="hidden"]').value = canvasData;
+            document.getElementById("form").submit();
+            return true;
+        }
+
+var audio = new Audio("ambulance.wav");
+
+audio.oncanplaythrough = function(){
+audio.play();
+}
+
+audio.loop = true;
+
+audio.onended = function(){
+audio.play();
+}
+
+    </script>
+   
+
+</div>
