@@ -3,14 +3,12 @@ const { query } = require("express");
 const bcrypt = require("bcryptjs");
 
 //const user = "postgres";
-const { POSTGRES_USER, POSTGRES_PASSWORD, DATABASE_NAME } = process.env;
+const { POSTGRES_USER, POSTGRES_PASSWORD, DATABASE_NAME, DATABASE_URL } = process.env;
 
 //console.log("USER ", POSTGRES_USER, " password ", POSTGRES_PASSWORD);
 // this establishes the connection to the db
 // it get's a connection string as an argument
-const db = spicedPg(
-    `postgres:${POSTGRES_USER}:${POSTGRES_PASSWORD}:@localhost:5432/${DATABASE_NAME}`
-);
+const db = spicedPg(DATABASE_URL);
 
 db.query(`SELECT * FROM signatures`)
     .then(function (result) {
