@@ -141,7 +141,7 @@ console.log(user_id);
             req.session.signed = 1;
             //res.cookie("signed", true, { maxAge: 900000, httpOnly: true });
 
-            res.redirect("/thanks");
+            res.redirect("/profile");
         })
         .catch(function (err) {
             console.log(err);
